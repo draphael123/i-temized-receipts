@@ -22,11 +22,19 @@ export default function Home() {
             Fountain&apos;s standardized cost breakdown rules. It ensures receipts are consistent,
             auditable, and aligned with the official template.
           </p>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed mb-4">
             By automating the breakdown process, we eliminate manual calculation errors and
             ensure every receipt follows the same business logic, making them easier to audit
             and compliant with billing requirements.
           </p>
+          <div className="bg-primary-50 border border-primary-200 rounded-md p-4">
+            <p className="text-sm text-primary-800 font-semibold mb-2">Comprehensive Cost Breakdown:</p>
+            <p className="text-sm text-primary-700">
+              The system calculates <strong>all costs</strong> from the Membership Payment Breakdowns
+              spreadsheet, including medications, lab services, provider services, operational costs,
+              support services, shipping, and any other categories defined in the spreadsheet.
+            </p>
+          </div>
         </div>
 
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">

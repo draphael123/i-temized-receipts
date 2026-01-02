@@ -35,6 +35,7 @@ export interface Breakdown {
   provider: BreakdownSection;
   operational: BreakdownSection;
   discounts?: BreakdownSection;
+  additionalSections?: BreakdownSection[]; // For support, shipping, and other costs
   total: number;
   exceptions: Exception[];
 }
@@ -62,11 +63,7 @@ export interface ReceiptData {
 
 export interface SpreadsheetData {
   [key: string]: {
-    pharmacy: number;
-    lab: number;
-    provider: number;
-    operational: number;
-    discount?: number;
+    [category: string]: number; // Dynamic categories: pharmacy, lab, provider, operational, support, shipping, etc.
   };
 }
 

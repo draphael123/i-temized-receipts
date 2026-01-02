@@ -20,20 +20,32 @@ export async function loadSpreadsheetFromFile(file: File): Promise<SpreadsheetDa
 
         const spreadsheetData: SpreadsheetData = {};
         
-        // Parse the spreadsheet - adjust based on actual structure
-        // Assuming format: [Plan Duration, Pharmacy, Lab, Provider, Operational, Discount]
+        // Get headers from first row (skip if empty)
+        const headers = (jsonData[0] as unknown[]) || [];
+        const planDurationIndex = 0; // First column is always plan duration
+        
+        // Parse the spreadsheet - dynamically read all columns
+        // Format: [Plan Duration, Category1, Category2, Category3, ...]
         for (let i = 1; i < jsonData.length; i++) {
           const row = jsonData[i] as unknown[];
-          if (row.length >= 5) {
-            const key = String(row[0] || '').trim();
+          if (row.length > 0) {
+            const key = String(row[planDurationIndex] || '').trim();
             if (key) {
-              spreadsheetData[key] = {
-                pharmacy: parseFloat(String(row[1] || 0)) || 0,
-                lab: parseFloat(String(row[2] || 0)) || 0,
-                provider: parseFloat(String(row[3] || 0)) || 0,
-                operational: parseFloat(String(row[4] || 0)) || 0,
-                discount: row[5] ? parseFloat(String(row[5])) : undefined,
-              };
+              const costs: { [category: string]: number } = {};
+              
+              // Read all cost columns (skip the plan duration column)
+              for (let j = 1; j < headers.length && j < row.length; j++) {
+                const categoryName = String(headers[j] || '').trim().toLowerCase();
+                if (categoryName) {
+                  const value = parseFloat(String(row[j] || 0)) || 0;
+                  if (value !== 0 || categoryName === 'discount') {
+                    // Include all non-zero values, and discount even if 0
+                    costs[categoryName] = value;
+                  }
+                }
+              }
+              
+              spreadsheetData[key] = costs;
             }
           }
         }

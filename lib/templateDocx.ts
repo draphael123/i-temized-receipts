@@ -326,6 +326,57 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     })
   );
 
+  // Additional Sections (Support, Shipping, etc.)
+  if (breakdown.additionalSections) {
+    breakdown.additionalSections.forEach((section) => {
+      tableRows.push(
+        new TableRow({
+          children: [
+            new TableCell({
+              children: [new Paragraph({ text: section.name, heading: HeadingLevel.HEADING_2 })],
+              columnSpan: 4,
+            }),
+          ],
+        })
+      );
+
+      section.lineItems.forEach((item) => {
+        tableRows.push(
+          new TableRow({
+            children: [
+              new TableCell({
+                children: [new Paragraph(item.description)],
+              }),
+              new TableCell({
+                children: [new Paragraph(item.quantity?.toString() || '-')],
+              }),
+              new TableCell({
+                children: [new Paragraph(`$${item.unitPrice.toFixed(2)}`)],
+              }),
+              new TableCell({
+                children: [new Paragraph(`$${item.total.toFixed(2)}`)],
+              }),
+            ],
+          })
+        );
+      });
+
+      tableRows.push(
+        new TableRow({
+          children: [
+            new TableCell({
+              children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
+              columnSpan: 3,
+            }),
+            new TableCell({
+              children: [new Paragraph({ children: [new TextRun({ text: `$${section.subtotal.toFixed(2)}`, bold: true })] })],
+            }),
+          ],
+        })
+      );
+    });
+  }
+
   // Discounts (if applicable)
   if (breakdown.discounts) {
     tableRows.push(

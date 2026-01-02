@@ -127,11 +127,32 @@ export default function HowItWorks() {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 How is the breakdown calculated?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 mb-3">
                 The tool uses the Membership Payment Breakdowns spreadsheet as the source
                 of truth. It applies standardized rules based on plan duration, program type,
                 medication selection, and patient state to calculate each line item.
               </p>
+              <div className="bg-blue-50 border border-blue-200 rounded-md p-3 mt-3">
+                <p className="text-sm text-blue-800 font-semibold mb-2">All Costs Included:</p>
+                <p className="text-sm text-blue-700">
+                  The breakdown includes <strong>all costs</strong> from the spreadsheet, not just medications.
+                  This includes:
+                </p>
+                <ul className="list-disc list-inside text-sm text-blue-700 mt-2 space-y-1">
+                  <li>Pharmacy costs (medications)</li>
+                  <li>Lab costs (laboratory services)</li>
+                  <li>Provider services (clinical services)</li>
+                  <li>Operational costs</li>
+                  <li>Support services</li>
+                  <li>Shipping & handling</li>
+                  <li>Any other cost categories in the spreadsheet</li>
+                </ul>
+                <p className="text-sm text-blue-700 mt-2">
+                  The system automatically reads all columns from the spreadsheet and creates
+                  line items for each cost category. Pharmacy costs are multiplied by the
+                  number of medications selected.
+                </p>
+              </div>
             </div>
 
             <div>

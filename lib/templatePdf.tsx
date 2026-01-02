@@ -1,3 +1,4 @@
+import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
 import type { ReceiptData } from './types';
 
@@ -212,6 +213,34 @@ export function generatePdfDocument(receipt: ReceiptData) {
               <Text style={styles.tableCell}></Text>
               <Text style={styles.tableCell}>${breakdown.operational.subtotal.toFixed(2)}</Text>
             </View>
+
+            {/* Additional Sections */}
+            {breakdown.additionalSections && breakdown.additionalSections.map((section, sectionIdx) => (
+              <React.Fragment key={sectionIdx}>
+                <View style={styles.tableRow}>
+                  <Text style={[styles.tableCellDescription, { fontWeight: 'bold' }]}>
+                    {section.name}
+                  </Text>
+                  <Text style={styles.tableCell}></Text>
+                  <Text style={styles.tableCell}></Text>
+                  <Text style={styles.tableCell}></Text>
+                </View>
+                {section.lineItems.map((item, idx) => (
+                  <View key={idx} style={styles.tableRow}>
+                    <Text style={styles.tableCellDescription}>{item.description}</Text>
+                    <Text style={styles.tableCell}>{item.quantity || '-'}</Text>
+                    <Text style={styles.tableCell}>${item.unitPrice.toFixed(2)}</Text>
+                    <Text style={styles.tableCell}>${item.total.toFixed(2)}</Text>
+                  </View>
+                ))}
+                <View style={[styles.tableRow, styles.totalRow]}>
+                  <Text style={[styles.tableCellDescription, { flex: 3 }]}>Subtotal</Text>
+                  <Text style={styles.tableCell}></Text>
+                  <Text style={styles.tableCell}></Text>
+                  <Text style={styles.tableCell}>${section.subtotal.toFixed(2)}</Text>
+                </View>
+              </React.Fragment>
+            ))}
 
             {/* Discounts */}
             {breakdown.discounts && (
