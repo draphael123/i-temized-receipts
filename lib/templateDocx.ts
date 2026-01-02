@@ -167,11 +167,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ text: 'Subtotal', bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ text: `$${breakdown.pharmacy.subtotal.toFixed(2)}`, bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.pharmacy.subtotal.toFixed(2)}`, bold: true })] })],
         }),
       ],
     })
@@ -214,11 +214,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ text: 'Subtotal', bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ text: `$${breakdown.lab.subtotal.toFixed(2)}`, bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.lab.subtotal.toFixed(2)}`, bold: true })] })],
         }),
       ],
     })
@@ -261,11 +261,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ text: 'Subtotal', bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ text: `$${breakdown.provider.subtotal.toFixed(2)}`, bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.provider.subtotal.toFixed(2)}`, bold: true })] })],
         }),
       ],
     })
@@ -308,11 +308,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ text: 'Subtotal', bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ text: `$${breakdown.operational.subtotal.toFixed(2)}`, bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.operational.subtotal.toFixed(2)}`, bold: true })] })],
         }),
       ],
     })
@@ -356,11 +356,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
       new TableRow({
         children: [
           new TableCell({
-            children: [new Paragraph({ text: 'Subtotal', bold: true })],
+            children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
             columnSpan: 3,
           }),
           new TableCell({
-            children: [new Paragraph({ text: `$${breakdown.discounts.subtotal.toFixed(2)}`, bold: true })],
+            children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.discounts.subtotal.toFixed(2)}`, bold: true })] })],
           }),
         ],
       })
@@ -372,11 +372,11 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ text: 'TOTAL COST', bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: 'TOTAL COST', bold: true })] })],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ text: `$${breakdown.total.toFixed(2)}`, bold: true })],
+          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.total.toFixed(2)}`, bold: true })] })],
         }),
       ],
     })
