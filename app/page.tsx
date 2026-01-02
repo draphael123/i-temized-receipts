@@ -19,7 +19,7 @@ export default function Home() {
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             This tool converts a membership payment into an itemized receipt by applying
-            Fountain's standardized cost breakdown rules. It ensures receipts are consistent,
+            Fountain&apos;s standardized cost breakdown rules. It ensures receipts are consistent,
             auditable, and aligned with the official template.
           </p>
           <p className="text-gray-700 leading-relaxed">

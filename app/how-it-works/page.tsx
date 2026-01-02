@@ -107,7 +107,7 @@ export default function HowItWorks() {
                 How are plan mismatches handled?
               </h3>
               <p className="text-gray-700">
-                If the detected plan duration doesn't match expected values, the system will
+                If the detected plan duration doesn&apos;t match expected values, the system will
                 flag it for manual review. You can override the plan selection if needed.
               </p>
             </div>

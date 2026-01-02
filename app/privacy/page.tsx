@@ -80,7 +80,7 @@ export default function Privacy() {
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             You can optionally enable local storage to save a history of generated receipts
-            in your browser's IndexedDB. This includes:
+            in your browser&apos;s IndexedDB. This includes:
           </p>
           <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
             <li>OCR-extracted text</li>
@@ -104,7 +104,7 @@ export default function Privacy() {
           <p className="text-gray-700 leading-relaxed">
             This application has no backend APIs. There is no server-side data retention,
             no cloud storage, and no external data transmission. When you close your browser,
-            all temporary processing data is cleared unless you've explicitly enabled local
+            all temporary processing data is cleared unless you&apos;ve explicitly enabled local
             storage.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function Privacy() {
               <p className="mt-1 text-sm text-blue-700">
                 Since all processing occurs locally and no data is transmitted externally,
                 this tool is designed to minimize PHI exposure. However, you should still
-                follow your organization's policies regarding patient data handling and
+                follow your organization&apos;s policies regarding patient data handling and
                 ensure screenshots are handled appropriately on your device.
               </p>
             </div>
