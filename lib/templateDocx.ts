@@ -167,11 +167,19 @@ export async function generateDocx(receipt: ReceiptData): Promise<Blob> {
     new TableRow({
       children: [
         new TableCell({
-          children: [new Paragraph({ children: [new TextRun({ text: 'Subtotal', bold: true })] })],
+          children: [
+            new Paragraph({
+              children: [new TextRun({ text: 'Subtotal', bold: true })],
+            }),
+          ],
           columnSpan: 3,
         }),
         new TableCell({
-          children: [new Paragraph({ children: [new TextRun({ text: `$${breakdown.pharmacy.subtotal.toFixed(2)}`, bold: true })] })],
+          children: [
+            new Paragraph({
+              children: [new TextRun({ text: `$${breakdown.pharmacy.subtotal.toFixed(2)}`, bold: true })],
+            }),
+          ],
         }),
       ],
     })
