@@ -1,3 +1,5 @@
+import InstallButton from '../components/InstallButton';
+
 export default function Download() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -45,12 +47,30 @@ export default function Download() {
             </div>
           </div>
 
-          <a
-            href="/app"
-            className="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
-          >
-            Open App to Install
-          </a>
+          <div className="space-y-4">
+            <InstallButton />
+            <a
+              href="/app"
+              className="inline-flex items-center px-6 py-3 border border-primary-600 text-primary-600 rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+            >
+              Open App
+            </a>
+          </div>
+          
+          <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-md p-4">
+            <p className="text-sm text-yellow-800">
+              <strong>Note:</strong> The install prompt may not appear if:
+            </p>
+            <ul className="list-disc list-inside text-sm text-yellow-700 mt-2 space-y-1">
+              <li>The app is already installed</li>
+              <li>You&apos;re using an unsupported browser</li>
+              <li>The site is not served over HTTPS (required for PWA)</li>
+              <li>Icons are missing (see instructions below)</li>
+            </ul>
+            <p className="text-sm text-yellow-700 mt-2">
+              If the install button doesn&apos;t appear, use your browser&apos;s menu to install manually.
+            </p>
+          </div>
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">

@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     maximumScale: 1,
     userScalable: false,
   },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+  },
 };
 
 export default function RootLayout({
