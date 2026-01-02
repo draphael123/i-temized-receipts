@@ -96,16 +96,24 @@ export default function ReceiptGenerator() {
   const handlePatientSubmit = () => {
     if (!payment || !spreadsheet) return;
 
-    // Validate patient data
+    // Validate patient data - trim whitespace and check for empty strings
+    const trimmedName = patient.name?.trim() || '';
+    const trimmedDateOfBirth = patient.dateOfBirth?.trim() || '';
+    const trimmedCoverageStartDate = patient.coverageStartDate?.trim() || '';
+    const trimmedCoverageEndDate = patient.coverageEndDate?.trim() || '';
+    const trimmedState = patient.state?.trim() || '';
+
     if (
-      !patient.name ||
-      !patient.dateOfBirth ||
-      !patient.coverageStartDate ||
-      !patient.coverageEndDate ||
-      !patient.state ||
-      patient.medication.length === 0
+      !trimmedName ||
+      !trimmedDateOfBirth ||
+      !trimmedCoverageStartDate ||
+      !trimmedCoverageEndDate ||
+      !trimmedState ||
+      patient.medication.length === 0 ||
+      !payment.planDuration ||
+      payment.planDuration <= 0
     ) {
-      alert('Please fill in all required patient fields.');
+      alert('Please fill in all required patient fields, including plan duration.');
       return;
     }
 

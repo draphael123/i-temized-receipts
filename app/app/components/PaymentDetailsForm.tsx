@@ -41,16 +41,18 @@ export default function PaymentDetailsForm({ data, onUpdate }: PaymentDetailsFor
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Plan Duration (weeks)
+            Plan Duration (weeks) *
           </label>
           <input
             type="number"
             min="1"
             max="52"
-            value={data.planDuration}
-            onChange={(e) =>
-              onUpdate({ planDuration: parseInt(e.target.value, 10) || 4 })
-            }
+            value={data.planDuration || ''}
+            onChange={(e) => {
+              const value = e.target.value;
+              onUpdate({ planDuration: value === '' ? 0 : parseInt(value, 10) || 0 });
+            }}
+            placeholder="Enter plan duration"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
         </div>
